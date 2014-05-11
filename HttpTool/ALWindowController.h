@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "ALRequest.h"
 @interface ALWindowController : NSWindowController
 
 

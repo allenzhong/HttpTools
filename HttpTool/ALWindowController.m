@@ -33,6 +33,8 @@
 - (IBAction)makeRequest:(id)sender {
     NSString *url = [self.urlTextField stringValue];
     NSLog(@"Test %@",url);
+    ALRequest *request = [[ALRequest alloc]initWithUrl:url];
+    [request beginRequest];
 }
 
 - (IBAction)addHeader:(id)sender {

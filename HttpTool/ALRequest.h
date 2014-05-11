@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ALRequest : NSObject
+@interface ALRequest : NSObject<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 
 @property NSMutableURLRequest *request;
 @property NSHTTPURLResponse *response;
@@ -20,4 +20,13 @@
 @property (nonatomic,strong) NSDictionary *parameters;
 @property (nonatomic,strong) NSString *responseHtml;
 
+
+-(id) initWithUrl:(NSString *)url;
+-(void)beginRequest;
+-(void)beginRequestWithUrlString:(NSString *)urlString;
+//-(void)beginRequestWithUrl:(NSURL *)url;
+//-(void)beginRequestWithUrlString:(NSString *)urlString;
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 @end
