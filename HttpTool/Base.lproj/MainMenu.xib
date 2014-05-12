@@ -678,7 +678,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="666" height="718"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="666" height="718"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -992,54 +992,81 @@
                                 <rect key="frame" x="0.0" y="355" width="666" height="363"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <subviews>
-                                    <scrollView borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwC-TK-O2E">
-                                        <rect key="frame" x="0.0" y="0.0" width="666" height="363"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <clipView key="contentView" id="w0x-b4-jyd">
-                                            <rect key="frame" x="2" y="2" width="662" height="359"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="LgY-Ez-jpL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="662" height="359"/>
+                                    <tabView translatesAutoresizingMaskIntoConstraints="NO" id="UrE-wK-wiq">
+                                        <rect key="frame" x="-7" y="-10" width="680" height="379"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                        <tabViewItems>
+                                            <tabViewItem label="Request" identifier="1" id="MSU-2e-Xkv">
+                                                <view key="view" id="SQq-Yc-LqP">
+                                                    <rect key="frame" x="10" y="33" width="660" height="333"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="textColor" red="0.93333339691162109" green="0.92549026012420654" blue="0.69803923368453979" alpha="1" colorSpace="deviceRGB"/>
-                                                    <color key="backgroundColor" red="0.082352943720000002" green="0.14901961389999999" blue="0.36470589040000001" alpha="1" colorSpace="deviceRGB"/>
-                                                    <size key="minSize" width="662" height="359"/>
-                                                    <size key="maxSize" width="666" height="10000000"/>
-                                                    <attributedString key="textStorage">
-                                                        <fragment content=" ">
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.93333339691162109" green="0.92549026012420654" blue="0.69803923368453979" alpha="1" colorSpace="deviceRGB"/>
-                                                                <font key="NSFont" metaFont="toolTip"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
-                                                    <color key="insertionPointColor" red="0.90588241820000004" green="0.91764712329999998" blue="0.58431375029999999" alpha="1" colorSpace="deviceRGB"/>
-                                                    <size key="minSize" width="662" height="359"/>
-                                                    <size key="maxSize" width="666" height="10000000"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="vSi-zQ-qdu" id="K2k-12-Jz2"/>
-                                                    </connections>
-                                                </textView>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.92549026012420654" green="0.76078438758850098" blue="0.62745100259780884" alpha="1" colorSpace="deviceRGB"/>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Ff1-Tx-TjE">
-                                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="GTu-X7-SCZ">
-                                            <rect key="frame" x="648" y="2" width="16" height="359"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
+                                                </view>
+                                            </tabViewItem>
+                                            <tabViewItem label="Response" identifier="2" id="s1j-Jt-Xlc">
+                                                <view key="view" id="xwX-nJ-VCy">
+                                                    <rect key="frame" x="10" y="33" width="660" height="333"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <scrollView misplaced="YES" borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwC-TK-O2E">
+                                                            <rect key="frame" x="-3" y="-3" width="673" height="353"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <clipView key="contentView" misplaced="YES" id="w0x-b4-jyd">
+                                                                <rect key="frame" x="2" y="2" width="669" height="349"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                <subviews>
+                                                                    <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="LgY-Ez-jpL">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="669" height="349"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                        <color key="textColor" red="0.93333339691162109" green="0.92549026012420654" blue="0.69803923368453979" alpha="1" colorSpace="deviceRGB"/>
+                                                                        <color key="backgroundColor" red="0.082352943720000002" green="0.14901961389999999" blue="0.36470589040000001" alpha="1" colorSpace="deviceRGB"/>
+                                                                        <size key="minSize" width="669" height="349"/>
+                                                                        <size key="maxSize" width="669" height="10000000"/>
+                                                                        <attributedString key="textStorage">
+                                                                            <fragment content=" ">
+                                                                                <attributes>
+                                                                                    <color key="NSColor" red="0.93333339691162109" green="0.92549026012420654" blue="0.69803923368453979" alpha="1" colorSpace="deviceRGB"/>
+                                                                                    <font key="NSFont" metaFont="toolTip"/>
+                                                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1"/>
+                                                                                </attributes>
+                                                                            </fragment>
+                                                                        </attributedString>
+                                                                        <color key="insertionPointColor" red="0.90588241820000004" green="0.91764712329999998" blue="0.58431375029999999" alpha="1" colorSpace="deviceRGB"/>
+                                                                        <size key="minSize" width="669" height="349"/>
+                                                                        <size key="maxSize" width="669" height="10000000"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="vSi-zQ-qdu" id="K2k-12-Jz2"/>
+                                                                        </connections>
+                                                                    </textView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" red="0.92549026012420654" green="0.76078438758850098" blue="0.62745100259780884" alpha="1" colorSpace="deviceRGB"/>
+                                                            </clipView>
+                                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="Ff1-Tx-TjE">
+                                                                <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </scroller>
+                                                            <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="GTu-X7-SCZ">
+                                                                <rect key="frame" x="655" y="2" width="16" height="349"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                            </scroller>
+                                                        </scrollView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="jwC-TK-O2E" firstAttribute="top" secondItem="xwX-nJ-VCy" secondAttribute="top" id="HEb-Tx-v4b"/>
+                                                        <constraint firstAttribute="trailing" secondItem="jwC-TK-O2E" secondAttribute="trailing" id="Iye-YB-3vz"/>
+                                                        <constraint firstItem="jwC-TK-O2E" firstAttribute="leading" secondItem="xwX-nJ-VCy" secondAttribute="leading" id="XqV-yB-w5G"/>
+                                                        <constraint firstAttribute="bottom" secondItem="jwC-TK-O2E" secondAttribute="bottom" id="bNw-C8-UNe"/>
+                                                    </constraints>
+                                                </view>
+                                            </tabViewItem>
+                                        </tabViewItems>
+                                    </tabView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="jwC-TK-O2E" firstAttribute="leading" secondItem="jLa-gQ-qqq" secondAttribute="leading" id="7OB-Zn-Nhw"/>
-                                    <constraint firstAttribute="bottom" secondItem="jwC-TK-O2E" secondAttribute="bottom" id="bTU-b8-sX3"/>
-                                    <constraint firstItem="jwC-TK-O2E" firstAttribute="top" secondItem="jLa-gQ-qqq" secondAttribute="top" id="cb6-7p-fuh"/>
-                                    <constraint firstAttribute="trailing" secondItem="jwC-TK-O2E" secondAttribute="trailing" id="xOO-6N-nUx"/>
+                                    <constraint firstAttribute="trailing" secondItem="UrE-wK-wiq" secondAttribute="trailing" id="FTZ-3M-NVb"/>
+                                    <constraint firstAttribute="bottom" secondItem="UrE-wK-wiq" secondAttribute="bottom" id="pnl-cb-6C7"/>
+                                    <constraint firstItem="UrE-wK-wiq" firstAttribute="top" secondItem="jLa-gQ-qqq" secondAttribute="top" id="ryn-e4-Xh8"/>
+                                    <constraint firstItem="UrE-wK-wiq" firstAttribute="leading" secondItem="jLa-gQ-qqq" secondAttribute="leading" id="thQ-xU-3h7"/>
                                 </constraints>
                             </customView>
                         </subviews>

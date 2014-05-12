@@ -39,6 +39,9 @@
     NSString *url = [self.urlTextField stringValue];
     NSLog(@"Test %@",url);
     ALRequest *request = [[ALRequest alloc]initWithUrl:url];
+//    [self.resultTextView setFont:[NSFont fontWithName:@"Arial" size:14]];
+    [self.resultTextView setTextColor:[NSColor whiteColor]];
+    [self.resultTextView setString:@""];
     [request beginRequest];
 }
 
@@ -56,9 +59,13 @@
 
 -(void) receiveNotification :(NSNotification*)aNotification{
     NSString *data = [[aNotification userInfo] objectForKey:@"html"];
-    NSLog(@"Text-> %@",data);
+//    NSLog(@"Text-> %@",data);
     if(self.resultTextView){
-        [self.resultTextView setString:data];
+        NSTextStorage *ts = [self.resultTextView textStorage];
+        [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:data];
+        [ts setFont:[NSFont fontWithName:@"Helvetica Neue" size:14]];
+        [self.resultTextView setTextColor:[NSColor whiteColor]];
+//        [self.resultTextView setString:data];
     }
 }
 
