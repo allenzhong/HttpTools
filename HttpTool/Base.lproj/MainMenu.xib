@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
                 <outlet property="methodCombox" destination="uzo-5L-NQd" id="We7-cm-Ue2"/>
-                <outlet property="resultTextView" destination="jwC-TK-O2E" id="tVc-ei-YlZ"/>
                 <outlet property="urlTextField" destination="f0Z-e5-2dX" id="4LY-pj-VTV"/>
             </connections>
         </customObject>
@@ -22,6 +21,7 @@
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <customObject id="vSi-zQ-qdu" customClass="ALWindowController">
             <connections>
+                <outlet property="resultTextView" destination="LgY-Ez-jpL" id="Nft-JB-lOR"/>
                 <outlet property="urlTextField" destination="f0Z-e5-2dX" id="vBe-b9-2EE"/>
             </connections>
         </customObject>
@@ -678,7 +678,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="666" height="718"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="666" height="718"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -715,7 +715,7 @@
                                     <textField verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="f0Z-e5-2dX">
                                         <rect key="frame" x="69" y="315" width="507" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="gIk-td-D2X">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="http://www.qq.com" drawsBackground="YES" id="gIk-td-D2X">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1018,6 +1018,9 @@
                                                     <color key="insertionPointColor" red="0.90588241820000004" green="0.91764712329999998" blue="0.58431375029999999" alpha="1" colorSpace="deviceRGB"/>
                                                     <size key="minSize" width="662" height="359"/>
                                                     <size key="maxSize" width="666" height="10000000"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="vSi-zQ-qdu" id="K2k-12-Jz2"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.92549026012420654" green="0.76078438758850098" blue="0.62745100259780884" alpha="1" colorSpace="deviceRGB"/>

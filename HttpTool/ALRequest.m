@@ -43,7 +43,10 @@
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
     NSString *html = [[NSString alloc]initWithData:data encoding:NSASCIIStringEncoding];
     //        NSString *errDesc = [error localizedDescription];
-    NSLog(@"Html -> %@",html);
+//    NSLog(@"Html -> %@",html);
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    NSDictionary *message = [NSDictionary dictionaryWithObject:html forKey:@"html"];
+    [center postNotificationName:@"httpResponse" object:self userInfo:message];
 }
 
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error

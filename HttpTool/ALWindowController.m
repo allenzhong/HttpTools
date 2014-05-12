@@ -19,9 +19,14 @@
     self = [super initWithWindow:window];
     if (self) {
         // Initialization code here.
+        [self.urlTextField setStringValue:@"http://www.qq.com"];
+        [self.resultTextView setString:@"test"];
     }
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(receiveNotification:) name:@"httpResponse" object:nil];
     return self;
 }
+
 
 - (void)windowDidLoad
 {
@@ -49,5 +54,12 @@
 - (IBAction)delParameter:(id)sender {
 }
 
+-(void) receiveNotification :(NSNotification*)aNotification{
+    NSString *data = [[aNotification userInfo] objectForKey:@"html"];
+    NSLog(@"Text-> %@",data);
+    if(self.resultTextView){
+        [self.resultTextView setString:data];
+    }
+}
 
 @end

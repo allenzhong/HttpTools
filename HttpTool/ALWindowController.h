@@ -8,12 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ALRequest.h"
-@interface ALWindowController : NSWindowController
+@interface ALWindowController : NSWindowController<NSTextDelegate,NSTextViewDelegate>
 
 
 @property (weak) IBOutlet NSTextField *urlTextField;
 @property (weak) IBOutlet NSComboBox *methodCombox;
-@property (weak) IBOutlet NSScrollView *resultTextView;
+@property (unsafe_unretained) IBOutlet NSTextView *resultTextView;
+
 
 - (IBAction)makeRequest:(id)sender;
 - (IBAction)addHeader:(id)sender;
@@ -21,6 +22,6 @@
 - (IBAction)addParameter:(id)sender;
 - (IBAction)delParameter:(id)sender;
 
-
+-(void) receiveNotification :(NSNotification*)aNotification;
 
 @end
