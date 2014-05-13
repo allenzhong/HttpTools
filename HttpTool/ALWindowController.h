@@ -8,13 +8,15 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ALRequest.h"
-@interface ALWindowController : NSWindowController<NSTextDelegate,NSTextViewDelegate>
+@interface ALWindowController : NSWindowController<NSTextDelegate,NSTextViewDelegate,NSComboBoxDataSource>
 
 
 @property (weak) IBOutlet NSTextField *urlTextField;
 @property (weak) IBOutlet NSComboBox *methodCombox;
 @property (unsafe_unretained) IBOutlet NSTextView *resultTextView;
+@property (weak) IBOutlet NSTabView *tabView;
 
+@property (nonatomic,strong) NSArray *methodArray;
 
 - (IBAction)makeRequest:(id)sender;
 - (IBAction)addHeader:(id)sender;

@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "ALWindowController.h"
 @interface ALAppDelegate : NSObject <NSApplicationDelegate>
-
-@property (assign) IBOutlet NSWindow *window;
+{
+    ALWindowController *mainWindowController;
+}
 
 @end

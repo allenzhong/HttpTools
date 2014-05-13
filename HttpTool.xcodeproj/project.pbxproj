@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D104244C1921E658001737BF /* ALWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D104244A1921E658001737BF /* ALWindowController.m */; };
+		D104244D1921E658001737BF /* ALWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D104244B1921E658001737BF /* ALWindowController.xib */; };
 		D10A516E191FBE420046B730 /* ALRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D10A516D191FBE420046B730 /* ALRequest.m */; };
 		D17F7172191A22F000DB6D72 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17F7171191A22F000DB6D72 /* Cocoa.framework */; };
 		D17F717C191A22F000DB6D72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D17F717A191A22F000DB6D72 /* InfoPlist.strings */; };
@@ -17,7 +19,6 @@
 		D17F718A191A22F100DB6D72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17F7189191A22F100DB6D72 /* Images.xcassets */; };
 		D17F7191191A22F100DB6D72 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17F7190191A22F100DB6D72 /* XCTest.framework */; };
 		D17F7192191A22F100DB6D72 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17F7171191A22F000DB6D72 /* Cocoa.framework */; };
-		D17F71B6191A851000DB6D72 /* ALWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D17F71B5191A851000DB6D72 /* ALWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,26 +32,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		D10A516C191FBE420046B730 /* ALRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALRequest.h; sourceTree = "<group>"; };
-		D10A516D191FBE420046B730 /* ALRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALRequest.m; sourceTree = "<group>"; };
+		D10424491921E658001737BF /* ALWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALWindowController.h; path = HttpTool/ALWindowController.h; sourceTree = "<group>"; };
+		D104244A1921E658001737BF /* ALWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALWindowController.m; path = HttpTool/ALWindowController.m; sourceTree = "<group>"; };
+		D104244B1921E658001737BF /* ALWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ALWindowController.xib; path = HttpTool/ALWindowController.xib; sourceTree = "<group>"; };
+		D10A516C191FBE420046B730 /* ALRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALRequest.h; path = HttpTool/ALRequest.h; sourceTree = "<group>"; };
+		D10A516D191FBE420046B730 /* ALRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALRequest.m; path = HttpTool/ALRequest.m; sourceTree = "<group>"; };
 		D17F716E191A22F000DB6D72 /* HttpTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HttpTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17F7171191A22F000DB6D72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D17F7174191A22F000DB6D72 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		D17F7175191A22F000DB6D72 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D17F7176191A22F000DB6D72 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		D17F7179191A22F000DB6D72 /* HttpTool-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "HttpTool-Info.plist"; sourceTree = "<group>"; };
+		D17F7179191A22F000DB6D72 /* HttpTool-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "HttpTool-Info.plist"; path = "HttpTool/HttpTool-Info.plist"; sourceTree = "<group>"; };
 		D17F717B191A22F000DB6D72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D17F717D191A22F000DB6D72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D17F717F191A22F000DB6D72 /* HttpTool-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HttpTool-Prefix.pch"; sourceTree = "<group>"; };
+		D17F717D191A22F000DB6D72 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HttpTool/main.m; sourceTree = "<group>"; };
+		D17F717F191A22F000DB6D72 /* HttpTool-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HttpTool-Prefix.pch"; path = "HttpTool/HttpTool-Prefix.pch"; sourceTree = "<group>"; };
 		D17F7181191A22F100DB6D72 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		D17F7183191A22F100DB6D72 /* ALAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ALAppDelegate.h; sourceTree = "<group>"; };
-		D17F7184191A22F100DB6D72 /* ALAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ALAppDelegate.m; sourceTree = "<group>"; };
+		D17F7183191A22F100DB6D72 /* ALAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ALAppDelegate.h; path = HttpTool/ALAppDelegate.h; sourceTree = "<group>"; };
+		D17F7184191A22F100DB6D72 /* ALAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ALAppDelegate.m; path = HttpTool/ALAppDelegate.m; sourceTree = "<group>"; };
 		D17F7187191A22F100DB6D72 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		D17F7189191A22F100DB6D72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D17F7189191A22F100DB6D72 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HttpTool/Images.xcassets; sourceTree = "<group>"; };
 		D17F718F191A22F100DB6D72 /* HttpToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HttpToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17F7190191A22F100DB6D72 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		D17F71B4191A851000DB6D72 /* ALWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALWindowController.h; sourceTree = "<group>"; };
-		D17F71B5191A851000DB6D72 /* ALWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,10 +76,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D104244E1921EC32001737BF /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				D17F7186191A22F100DB6D72 /* MainMenu.xib */,
+				D104244B1921E658001737BF /* ALWindowController.xib */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		D104244F1921EC63001737BF /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D10A516C191FBE420046B730 /* ALRequest.h */,
+				D10A516D191FBE420046B730 /* ALRequest.m */,
+				D17F7183191A22F100DB6D72 /* ALAppDelegate.h */,
+				D17F7184191A22F100DB6D72 /* ALAppDelegate.m */,
+				D10424491921E658001737BF /* ALWindowController.h */,
+				D104244A1921E658001737BF /* ALWindowController.m */,
+			);
+			name = Sources;
+			sourceTree = "<group>";
+		};
+		D10424501921EC85001737BF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D17F7189191A22F100DB6D72 /* Images.xcassets */,
+				D17F7179191A22F000DB6D72 /* HttpTool-Info.plist */,
+				D17F717A191A22F000DB6D72 /* InfoPlist.strings */,
+				D17F717D191A22F000DB6D72 /* main.m */,
+				D17F717F191A22F000DB6D72 /* HttpTool-Prefix.pch */,
+				D17F7180191A22F100DB6D72 /* Credits.rtf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		D17F7165191A22F000DB6D72 = {
 			isa = PBXGroup;
 			children = (
-				D17F7177191A22F000DB6D72 /* HttpTool */,
+				D10424501921EC85001737BF /* Resources */,
+				D104244F1921EC63001737BF /* Sources */,
+				D104244E1921EC32001737BF /* Interfaces */,
 				D17F7170191A22F000DB6D72 /* Frameworks */,
 				D17F716F191A22F000DB6D72 /* Products */,
 			);
@@ -110,34 +149,6 @@
 				D17F7176191A22F000DB6D72 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		D17F7177191A22F000DB6D72 /* HttpTool */ = {
-			isa = PBXGroup;
-			children = (
-				D10A516C191FBE420046B730 /* ALRequest.h */,
-				D10A516D191FBE420046B730 /* ALRequest.m */,
-				D17F7183191A22F100DB6D72 /* ALAppDelegate.h */,
-				D17F7184191A22F100DB6D72 /* ALAppDelegate.m */,
-				D17F7186191A22F100DB6D72 /* MainMenu.xib */,
-				D17F7189191A22F100DB6D72 /* Images.xcassets */,
-				D17F7178191A22F000DB6D72 /* Supporting Files */,
-				D17F71B4191A851000DB6D72 /* ALWindowController.h */,
-				D17F71B5191A851000DB6D72 /* ALWindowController.m */,
-			);
-			path = HttpTool;
-			sourceTree = "<group>";
-		};
-		D17F7178191A22F000DB6D72 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D17F7179191A22F000DB6D72 /* HttpTool-Info.plist */,
-				D17F717A191A22F000DB6D72 /* InfoPlist.strings */,
-				D17F717D191A22F000DB6D72 /* main.m */,
-				D17F717F191A22F000DB6D72 /* HttpTool-Prefix.pch */,
-				D17F7180191A22F100DB6D72 /* Credits.rtf */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D17F717C191A22F000DB6D72 /* InfoPlist.strings in Resources */,
+				D104244D1921E658001737BF /* ALWindowController.xib in Resources */,
 				D17F718A191A22F100DB6D72 /* Images.xcassets in Resources */,
 				D17F7182191A22F100DB6D72 /* Credits.rtf in Resources */,
 				D17F7188191A22F100DB6D72 /* MainMenu.xib in Resources */,
@@ -238,10 +250,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D104244C1921E658001737BF /* ALWindowController.m in Sources */,
 				D10A516E191FBE420046B730 /* ALRequest.m in Sources */,
 				D17F717E191A22F000DB6D72 /* main.m in Sources */,
 				D17F7185191A22F100DB6D72 /* ALAppDelegate.m in Sources */,
-				D17F71B6191A851000DB6D72 /* ALWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,6 +281,7 @@
 				D17F717B191A22F000DB6D72 /* en */,
 			);
 			name = InfoPlist.strings;
+			path = HttpTool;
 			sourceTree = "<group>";
 		};
 		D17F7180191A22F100DB6D72 /* Credits.rtf */ = {
@@ -277,6 +290,7 @@
 				D17F7181191A22F100DB6D72 /* en */,
 			);
 			name = Credits.rtf;
+			path = HttpTool;
 			sourceTree = "<group>";
 		};
 		D17F7186191A22F100DB6D72 /* MainMenu.xib */ = {
@@ -285,6 +299,7 @@
 				D17F7187191A22F100DB6D72 /* Base */,
 			);
 			name = MainMenu.xib;
+			path = HttpTool;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

@@ -13,6 +13,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
+    mainWindowController = [[ALWindowController alloc]initWithWindowNibName:@"ALWindowController"];
+    [mainWindowController showWindow:self];
 }
 
 @end

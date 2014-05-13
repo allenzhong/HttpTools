@@ -14,34 +14,34 @@
 
 @implementation ALWindowController
 
-- (id)initWithWindow:(NSWindow *)window
-{
-    self = [super initWithWindow:window];
+-(id)initWithWindowNibName:(NSString *)windowNibName{
+    self = [super initWithWindowNibName:windowNibName];
     if (self) {
         // Initialization code here.
-        [self.urlTextField setStringValue:@"http://www.qq.com"];
-        [self.resultTextView setString:@"test"];
+        _methodArray = [[NSArray alloc]initWithObjects:@"GET",@"POST",@"HEAD",@"PUT",@"DELETE", nil];
     }
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(receiveNotification:) name:@"httpResponse" object:nil];
     return self;
 }
 
-
 - (void)windowDidLoad
 {
     [super windowDidLoad];
-    
+    [self.urlTextField setStringValue:@"http://www.qq.com"];
+    self.methodCombox.dataSource = self;
+    [self.methodCombox selectItemAtIndex:0];
+    [self.resultTextView setTextColor:[NSColor whiteColor]];
+    [self.resultTextView setString:@""];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
 - (IBAction)makeRequest:(id)sender {
     NSString *url = [self.urlTextField stringValue];
-    NSLog(@"Test %@",url);
+    NSString *method = [self.methodCombox stringValue];
+    
     ALRequest *request = [[ALRequest alloc]initWithUrl:url];
-//    [self.resultTextView setFont:[NSFont fontWithName:@"Arial" size:14]];
-    [self.resultTextView setTextColor:[NSColor whiteColor]];
-    [self.resultTextView setString:@""];
+    [request setMethod:method];
     [request beginRequest];
 }
 
@@ -59,14 +59,23 @@
 
 -(void) receiveNotification :(NSNotification*)aNotification{
     NSString *data = [[aNotification userInfo] objectForKey:@"html"];
-//    NSLog(@"Text-> %@",data);
     if(self.resultTextView){
         NSTextStorage *ts = [self.resultTextView textStorage];
         [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:data];
         [ts setFont:[NSFont fontWithName:@"Helvetica Neue" size:14]];
         [self.resultTextView setTextColor:[NSColor whiteColor]];
-//        [self.resultTextView setString:data];
+        [self.tabView selectTabViewItemAtIndex:1];
     }
+}
+#pragma mark - ComboBox datasource
+- (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox{
+    return [_methodArray count];
+}
+- (id)comboBox:(NSComboBox *)aComboBox objectValueForItemAtIndex:(NSInteger)index{
+    return [_methodArray objectAtIndex:index];
+}
+- (NSUInteger)comboBox:(NSComboBox *)aComboBox indexOfItemWithStringValue:(NSString *)string{
+    return [_methodArray indexOfObject:string];
 }
 
 @end

@@ -21,6 +21,7 @@
 
 
 -(void)beginRequest{
+    [self.request setHTTPMethod:self.method];
     [self.request setURL:self.url];
     [self.request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
     [self.request setTimeoutInterval:10];
