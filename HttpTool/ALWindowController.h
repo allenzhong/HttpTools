@@ -11,6 +11,9 @@
 @interface ALWindowController : NSWindowController<NSTextDelegate,NSTextViewDelegate,NSComboBoxDataSource>
 
 
+@property NSArray *headerNames;
+@property NSDictionary *headerValues;
+
 @property (weak) IBOutlet NSTextField *urlTextField;
 @property (weak) IBOutlet NSComboBox *methodCombox;
 @property (unsafe_unretained) IBOutlet NSTextView *resultTextView;
@@ -24,6 +27,9 @@
 - (IBAction)addParameter:(id)sender;
 - (IBAction)delParameter:(id)sender;
 
--(void) receiveNotification :(NSNotification*)aNotification;
+
+
+-(NSArray *)headerValuesArrayForKey:(NSString *)nameKey;
+-(void) receiveNotification :(NSNotification*) aNotification;
 
 @end

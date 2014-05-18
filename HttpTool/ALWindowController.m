@@ -19,6 +19,10 @@
     if (self) {
         // Initialization code here.
         _methodArray = [[NSArray alloc]initWithObjects:@"GET",@"POST",@"HEAD",@"PUT",@"DELETE", nil];
+        NSString *filePath = [[NSBundle mainBundle]pathForResource:@"HeaderNames" ofType:@"plist"];
+        self.headerNames = [NSArray arrayWithContentsOfFile:filePath];
+        filePath = [[NSBundle mainBundle]pathForResource:@"HeaderValues" ofType:@"plist"];
+        self.headerValues = [NSDictionary dictionaryWithContentsOfFile:filePath];
     }
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(receiveNotification:) name:@"httpResponse" object:nil];
@@ -55,6 +59,11 @@
 }
 
 - (IBAction)delParameter:(id)sender {
+}
+
+-(NSArray *)headerValuesArrayForKey:(NSString *)nameKey{
+    NSString* key = [nameKey lowercaseString];
+    return [self.headerValues objectForKey:key];
 }
 
 -(void) receiveNotification :(NSNotification*)aNotification{

@@ -10,6 +10,8 @@
 		D104244C1921E658001737BF /* ALWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = D104244A1921E658001737BF /* ALWindowController.m */; };
 		D104244D1921E658001737BF /* ALWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D104244B1921E658001737BF /* ALWindowController.xib */; };
 		D10A516E191FBE420046B730 /* ALRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D10A516D191FBE420046B730 /* ALRequest.m */; };
+		D12D6F691928884700FDB309 /* HeaderNames.plist in Resources */ = {isa = PBXBuildFile; fileRef = D12D6F671928884700FDB309 /* HeaderNames.plist */; };
+		D12D6F6A1928884700FDB309 /* HeaderValues.plist in Resources */ = {isa = PBXBuildFile; fileRef = D12D6F681928884700FDB309 /* HeaderValues.plist */; };
 		D17F7172191A22F000DB6D72 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17F7171191A22F000DB6D72 /* Cocoa.framework */; };
 		D17F717C191A22F000DB6D72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D17F717A191A22F000DB6D72 /* InfoPlist.strings */; };
 		D17F717E191A22F000DB6D72 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D17F717D191A22F000DB6D72 /* main.m */; };
@@ -37,6 +39,8 @@
 		D104244B1921E658001737BF /* ALWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ALWindowController.xib; path = HttpTool/ALWindowController.xib; sourceTree = "<group>"; };
 		D10A516C191FBE420046B730 /* ALRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ALRequest.h; path = HttpTool/ALRequest.h; sourceTree = "<group>"; };
 		D10A516D191FBE420046B730 /* ALRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ALRequest.m; path = HttpTool/ALRequest.m; sourceTree = "<group>"; };
+		D12D6F671928884700FDB309 /* HeaderNames.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = HeaderNames.plist; path = HttpTool/HeaderNames.plist; sourceTree = "<group>"; };
+		D12D6F681928884700FDB309 /* HeaderValues.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = HeaderValues.plist; path = HttpTool/HeaderValues.plist; sourceTree = "<group>"; };
 		D17F716E191A22F000DB6D72 /* HttpTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HttpTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D17F7171191A22F000DB6D72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		D17F7174191A22F000DB6D72 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -101,6 +105,8 @@
 		D10424501921EC85001737BF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D12D6F671928884700FDB309 /* HeaderNames.plist */,
+				D12D6F681928884700FDB309 /* HeaderValues.plist */,
 				D17F7189191A22F100DB6D72 /* Images.xcassets */,
 				D17F7179191A22F000DB6D72 /* HttpTool-Info.plist */,
 				D17F717A191A22F000DB6D72 /* InfoPlist.strings */,
@@ -228,9 +234,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D12D6F691928884700FDB309 /* HeaderNames.plist in Resources */,
 				D17F717C191A22F000DB6D72 /* InfoPlist.strings in Resources */,
 				D104244D1921E658001737BF /* ALWindowController.xib in Resources */,
 				D17F718A191A22F100DB6D72 /* Images.xcassets in Resources */,
+				D12D6F6A1928884700FDB309 /* HeaderValues.plist in Resources */,
 				D17F7182191A22F100DB6D72 /* Credits.rtf in Resources */,
 				D17F7188191A22F100DB6D72 /* MainMenu.xib in Resources */,
 			);
