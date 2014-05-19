@@ -26,8 +26,14 @@
     [self.request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
     [self.request setTimeoutInterval:10];
     
+    if(self.headers){
+        for(ALHeader *h in self.headers){
+            [self.request setValue:h.value forHTTPHeaderField:h.name];
+        }
+    }
     [NSURLConnection connectionWithRequest:self.request delegate:self];
 }
+
 
 -(void)beginRequestWithUrlString:(NSString *)urlString{
     self.url = [NSURL URLWithString:urlString];

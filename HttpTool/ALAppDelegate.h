@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ALWindowController.h"
+#import "ALHeader.h"
 @interface ALAppDelegate : NSObject <NSApplicationDelegate>
 {
     ALWindowController *mainWindowController;

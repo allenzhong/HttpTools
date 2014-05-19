@@ -8,9 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ALRequest.h"
-@interface ALWindowController : NSWindowController<NSTextDelegate,NSTextViewDelegate,NSComboBoxDataSource>
+@interface ALWindowController : NSWindowController<NSComboBoxCellDataSource>
 
-
+@property NSMutableArray *headers;
 @property NSArray *headerNames;
 @property NSDictionary *headerValues;
 
@@ -18,6 +18,8 @@
 @property (weak) IBOutlet NSComboBox *methodCombox;
 @property (unsafe_unretained) IBOutlet NSTextView *resultTextView;
 @property (weak) IBOutlet NSTabView *tabView;
+@property (strong) IBOutlet NSArrayController *headersController;
+@property (weak) IBOutlet NSTableView *headersTableView;
 
 @property (nonatomic,strong) NSArray *methodArray;
 
@@ -28,8 +30,8 @@
 - (IBAction)delParameter:(id)sender;
 
 
-
+-(void)clearTextView;
 -(NSArray *)headerValuesArrayForKey:(NSString *)nameKey;
 -(void) receiveNotification :(NSNotification*) aNotification;
-
+-(void)setupData;
 @end

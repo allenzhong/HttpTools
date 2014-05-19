@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ALHeader.h"
 @interface ALRequest : NSObject<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
 
 @property NSMutableURLRequest *request;
 @property NSHTTPURLResponse *response;
 @property NSURL *url;
 @property NSError *error;
-
+@property NSMutableArray *headers;
 @property (nonatomic,strong) NSString *method;
-@property (nonatomic,strong) NSDictionary *header;
+//@property (nonatomic,strong) NSDictionary *header;
 @property (nonatomic,strong) NSDictionary *parameters;
 @property (nonatomic,strong) NSString *responseHtml;
 

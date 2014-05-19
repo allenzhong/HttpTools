@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="5056"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ALWindowController">
             <connections>
+                <outlet property="headersController" destination="awk-Ho-jUy" id="i4J-7L-NH8"/>
+                <outlet property="headersTableView" destination="qBB-mW-uIi" id="Qis-kE-fOr"/>
                 <outlet property="methodCombox" destination="UY3-sJ-MbE" id="DNW-so-gbZ"/>
                 <outlet property="resultTextView" destination="EaU-og-Osb" id="UPi-kS-dGO"/>
                 <outlet property="tabView" destination="zOG-F1-ow5" id="OL4-qj-1ca"/>
@@ -83,6 +85,9 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </comboBoxCell>
+                                        <connections>
+                                            <outlet property="dataSource" destination="-2" id="0c6-wZ-TZg"/>
+                                        </connections>
                                     </comboBox>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="HcF-Qy-bBr">
                                         <rect key="frame" x="605" y="130" width="21" height="21"/>
@@ -106,7 +111,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="addHeader:" target="-2" id="F7G-qp-hEd"/>
+                                            <action selector="add:" target="awk-Ho-jUy" id="EWB-pU-sES"/>
                                         </connections>
                                     </button>
                                     <button translatesAutoresizingMaskIntoConstraints="NO" id="Scw-7u-ujV">
@@ -128,7 +133,7 @@
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
-                                            <action selector="delHeader:" target="-2" id="TIt-H1-tsw"/>
+                                            <action selector="remove:" target="awk-Ho-jUy" id="Gbn-r9-NRb"/>
                                         </connections>
                                     </button>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoT-RT-X4w">
@@ -138,7 +143,7 @@
                                             <rect key="frame" x="1" y="17" width="664" height="108"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="Tug-SF-i4p" viewBased="YES" id="qBB-mW-uIi">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="Tug-SF-i4p" id="qBB-mW-uIi">
                                                     <rect key="frame" x="0.0" y="0.0" width="664" height="108"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
@@ -151,23 +156,18 @@
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Nw9-Cx-j3b">
+                                                            <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" identifier="headerName" buttonBordered="NO" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="W1k-ut-cGm">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="-2" id="ycA-7z-TQR"/>
+                                                                </connections>
+                                                            </comboBoxCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                            <prototypeCellViews>
-                                                                <comboBox verticalHuggingPriority="750" id="ZHs-l0-NWJ">
-                                                                    <rect key="frame" x="1" y="1" width="325" height="26"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="3tH-aS-EUH">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </comboBoxCell>
-                                                                </comboBox>
-                                                            </prototypeCellViews>
+                                                            <connections>
+                                                                <binding destination="awk-Ho-jUy" name="value" keyPath="arrangedObjects.name" id="4Rt-tO-ESp"/>
+                                                            </connections>
                                                         </tableColumn>
                                                         <tableColumn width="333" minWidth="40" maxWidth="1000" id="GKL-qu-rsX">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Value">
@@ -175,23 +175,18 @@
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" white="0.33333298560000002" alpha="1" colorSpace="calibratedWhite"/>
                                                             </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="dPE-JZ-K48">
+                                                            <comboBoxCell key="dataCell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" identifier="headerValue" tag="1" buttonBordered="NO" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="dvt-do-bhW">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
+                                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="-2" id="wlF-Lf-va0"/>
+                                                                </connections>
+                                                            </comboBoxCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                            <prototypeCellViews>
-                                                                <comboBox verticalHuggingPriority="750" id="ALa-8p-NT4">
-                                                                    <rect key="frame" x="329" y="1" width="333" height="26"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="y0a-KD-MTf">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                                    </comboBoxCell>
-                                                                </comboBox>
-                                                            </prototypeCellViews>
+                                                            <connections>
+                                                                <binding destination="awk-Ho-jUy" name="value" keyPath="arrangedObjects.value" id="0eD-hZ-1km"/>
+                                                            </connections>
                                                         </tableColumn>
                                                     </tableColumns>
                                                 </tableView>
@@ -421,5 +416,14 @@
                 </constraints>
             </view>
         </window>
+        <arrayController objectClassName="ALHeader" id="awk-Ho-jUy" userLabel="headersController">
+            <declaredKeys>
+                <string>name</string>
+                <string>value</string>
+            </declaredKeys>
+            <connections>
+                <binding destination="-2" name="contentArray" keyPath="self.headers" id="jvo-jx-z2O"/>
+            </connections>
+        </arrayController>
     </objects>
 </document>
