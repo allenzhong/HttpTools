@@ -12,7 +12,7 @@
 
 -(id) initWithUrl:(NSString *)url{
     if(self=[super init]){
-        self.url = [NSURL URLWithString:url];
+        self.url = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         self.method = @"GET";
         self.request = [NSMutableURLRequest requestWithURL:self.url];
     }
