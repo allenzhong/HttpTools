@@ -19,11 +19,13 @@
 //@property (nonatomic,strong) NSDictionary *header;
 @property (nonatomic,strong) NSDictionary *parameters;
 @property (nonatomic,strong) NSString *responseHtml;
-
-
+@property NSStringEncoding textEncoding;
+@property NSString *textEncodingName;
 -(id) initWithUrl:(NSString *)url;
 -(void)beginRequest;
 -(void)beginRequestWithUrlString:(NSString *)urlString;
+
+-(NSStringEncoding)getEncodingWithCodeName:(NSString *)encodingName;
 //-(void)beginRequestWithUrl:(NSURL *)url;
 //-(void)beginRequestWithUrlString:(NSString *)urlString;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;

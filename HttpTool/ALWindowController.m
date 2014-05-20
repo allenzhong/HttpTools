@@ -101,6 +101,7 @@
     NSString *data = [[aNotification userInfo] objectForKey:@"html"];
     if(self.resultTextView){
         NSTextStorage *ts = [self.resultTextView textStorage];
+        
         [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:data];
         [ts setFont:[NSFont fontWithName:@"Helvetica Neue" size:14]];
         [self.resultTextView setTextColor:[NSColor whiteColor]];
