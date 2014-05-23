@@ -31,6 +31,9 @@
             [self.request setValue:h.value forHTTPHeaderField:h.name];
         }
     }
+    self.responseHtml = [[NSMutableString alloc]init];
+    self.textEncodingName = [[NSString alloc]init];
+    self.data = [[NSMutableData alloc]init];
     [NSURLConnection connectionWithRequest:self.request delegate:self];
 }
 
@@ -61,27 +64,29 @@
     return result;
 }
 
--(NSString *)findEncodingNameWithHtml:(NSString*)muStrHTMLContent{
+-(void)findEncodingNameWithHtml:(NSString*)muStrHTMLContent{
+    if (![self.textEncodingName isEqualToString:@""]) {
+        return;
+    }
     NSError *error;
     NSString* html = [muStrHTMLContent copy];
     
     NSString *strRegex = @"charset\\s?=\\s?\"?\'?(.\\w+-?\\w)";
-//    NSRange myrange=[html rangeOfString:strRegex];
-//    NSLog(@"%ld,%ld,%@",myrange.location,myrange.length,[html substringWithRange:myrange]);
     NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:strRegex options:NSRegularExpressionCaseInsensitive error:&error];
-    //无视大小写.
-    __block NSUInteger count = 0;
-    [reg enumerateMatchesInString:html options:NSMatchingReportCompletion range:NSMakeRange(0, [html length]) usingBlock:^(NSTextCheckingResult *match, NSMatchingFlags flags, BOOL *stop){
-        
-            NSRange matchRange = [match rangeAtIndex:1];
+    NSArray *array = [reg matchesInString:html options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, [html length])];
+
+    for(NSTextCheckingResult *result in array){
+        NSRange matchRange = [result rangeAtIndex:1];
+        if(matchRange.length >0){
             NSLog(@"%ld,%ld,%@",matchRange.location,matchRange.length,[html substringWithRange:matchRange]);
-            if(matchRange.length>0)
-                self.textEncodingName = [html substringWithRange:matchRange];
-        
-        if (++count >= 100) *stop = YES;
-    }];
-    return nil;
+            self.textEncodingName = [html substringWithRange:matchRange];
+            break;
+        }
+    }
 }
+
+#pragma mark - NSURLConnectionDataDelegate
+
 - (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)response
 {
     
@@ -92,14 +97,8 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    NSString *html = [[NSString alloc]initWithData:data encoding:NSASCIIStringEncoding];
-    [self findEncodingNameWithHtml:html];
-    html = [[NSString alloc]initWithData:data encoding:[self getEncodingWithCodeName:self.textEncodingName]];
-    //        NSString *errDesc = [error localizedDescription];
-//    NSLog(@"Html -> %@",html);
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    NSDictionary *message = [NSDictionary dictionaryWithObject:html forKey:@"html"];
-    [center postNotificationName:@"httpResponse" object:self userInfo:message];
+    [self.data appendData:data];
+
 }
 
 - (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
@@ -107,6 +106,20 @@
     NSLog(@"response error%@", [error localizedFailureReason]);
 }
 
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    NSLog(@"Finished");
+    NSString *html = [[NSString alloc]initWithData:self.data
+                                          encoding:NSASCIIStringEncoding];
+    [self findEncodingNameWithHtml:html];
+    NSStringEncoding encode = [self getEncodingWithCodeName:self.textEncodingName];
+    NSString *after_html = [[NSString alloc]initWithData:self.data
+                                                encoding:encode];
+    if(after_html){
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        NSDictionary *message = [NSDictionary dictionaryWithObject:after_html forKey:@"html"];
+        [center postNotificationName:@"httpResponse" object:self userInfo:message];
+    }
 
+}
 
 @end
