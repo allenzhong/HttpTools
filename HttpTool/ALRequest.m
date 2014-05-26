@@ -21,6 +21,12 @@
 
 
 -(void)beginRequest{
+    self.beginDate = [[NSDate alloc]init];
+    NSLog(@"%@",self.beginDate);
+    if([@"POST" isEqualToString:self.method]){
+        [self.request setHTTPBody:[self.body dataUsingEncoding:0]];
+    }
+    
     [self.request setHTTPMethod:self.method];
     [self.request setURL:self.url];
     [self.request setCachePolicy:NSURLRequestUseProtocolCachePolicy];
@@ -41,7 +47,6 @@
 -(void)beginRequestWithUrlString:(NSString *)urlString{
     self.url = [NSURL URLWithString:urlString];
     [self beginRequest];
-    
 }
 
 
@@ -108,6 +113,10 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection{
     NSLog(@"Finished");
+    NSDate *now = [[NSDate alloc]init];
+    NSTimeInterval it = [now timeIntervalSinceDate:self.beginDate];
+    
+    NSLog(@"Time interval %f",it);
     NSString *html = [[NSString alloc]initWithData:self.data
                                           encoding:NSASCIIStringEncoding];
     [self findEncodingNameWithHtml:html];
@@ -116,7 +125,10 @@
                                                 encoding:encode];
     if(after_html){
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-        NSDictionary *message = [NSDictionary dictionaryWithObject:after_html forKey:@"html"];
+        NSMutableDictionary *message = [[NSMutableDictionary alloc]init];
+        [message setValue:after_html forKey:@"html"];
+//        [NSDictionary dictionaryWithObject:after_html forKey:@"html"];
+        [message setValue:[NSString stringWithFormat:@"%f s",it] forKey:@"delta"];
         [center postNotificationName:@"httpResponse" object:self userInfo:message];
     }
 

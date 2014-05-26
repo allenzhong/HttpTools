@@ -50,6 +50,7 @@
     [self.methodCombox selectItemAtIndex:0];
     [self.resultTextView setTextColor:[NSColor whiteColor]];
     [self.resultTextView setString:@""];
+    [self.progressIndicator setHidden:YES];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 
     //    [self.headersController addObject:aDic];
@@ -66,7 +67,13 @@
     ALRequest *request = [[ALRequest alloc]initWithUrl:url];
     [request setMethod:method];
     [request setHeaders:self.headers];
+    [request setBody:self.bodyTextField.stringValue];
     [request beginRequest];
+    [self.progressIndicator setHidden:NO];
+    [self.progressIndicator setIndeterminate:YES];
+    
+    [self.progressIndicator startAnimation:self];
+
 }
 
 - (IBAction)addHeader:(id)sender {
@@ -99,6 +106,9 @@
 
 -(void) receiveNotification :(NSNotification*)aNotification{
     NSString *data = [[aNotification userInfo] objectForKey:@"html"];
+    NSString *timeInterval = [[aNotification userInfo] objectForKey:@"delta"];
+    [self.timeInterval setStringValue:timeInterval];
+    NSLog(@"%@",timeInterval);
     if(self.resultTextView){
         NSTextStorage *ts = [self.resultTextView textStorage];
         
@@ -107,6 +117,10 @@
         [self.resultTextView setTextColor:[NSColor whiteColor]];
         [self.tabView selectTabViewItemAtIndex:1];
     }
+    
+    [self.progressIndicator setIndeterminate:NO];
+    [self.progressIndicator stopAnimation:self];
+    [self.progressIndicator setHidden:YES];
 }
 #pragma mark - Request Method ComboBox datasource
 - (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox{

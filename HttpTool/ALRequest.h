@@ -18,8 +18,10 @@
 @property (nonatomic,strong) NSString *method;
 //@property (nonatomic,strong) NSDictionary *header;
 @property (nonatomic,strong) NSDictionary *parameters;
+@property (nonatomic,strong) NSString   *body;
 @property (nonatomic,strong) NSMutableString *responseHtml;
 @property (nonatomic,strong) NSMutableData *data;
+@property (nonatomic,strong) NSDate* beginDate;
 @property NSStringEncoding textEncoding;
 @property NSString *textEncodingName;
 -(id) initWithUrl:(NSString *)url;

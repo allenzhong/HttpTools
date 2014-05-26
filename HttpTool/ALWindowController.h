@@ -20,6 +20,9 @@
 @property (weak) IBOutlet NSTabView *tabView;
 @property (strong) IBOutlet NSArrayController *headersController;
 @property (weak) IBOutlet NSTableView *headersTableView;
+@property (weak) IBOutlet NSProgressIndicator *progressIndicator;
+@property (weak) IBOutlet NSTextField *timeInterval;
+@property (weak) IBOutlet NSTextField *bodyTextField;
 
 @property (nonatomic,strong) NSArray *methodArray;
 
