@@ -31,17 +31,7 @@
 }
 
 -(void)setupData{
-    
     self.headers = [[NSMutableArray alloc]init];
-//    //    [self.headersController setContent:self.headers];
-//    NSString *name = [self.headerNames objectAtIndex:0];
-//    NSString *value = [[self headerValuesArrayForKey:name] objectAtIndex:0];
-//    ALHeader *head = [[ALHeader alloc]init];
-//    head.name = name;
-//    head.value = value;
-//    [self willChangeValueForKey:@"headers"];
-//    [self.headers addObject:head];
-//    [self didChangeValueForKey:@"headers"];
 }
 - (void)windowDidLoad
 {
@@ -67,13 +57,13 @@
     ALRequest *request = [[ALRequest alloc]initWithUrl:url];
     [request setMethod:method];
     [request setHeaders:self.headers];
-    [request setBody:self.bodyTextField.stringValue];
+    NSTextView *bodyView = [self.bodyScrollView documentView];
+    [request setBody:bodyView.string];
     [request beginRequest];
     [self.progressIndicator setHidden:NO];
     [self.progressIndicator setIndeterminate:YES];
-    
-    [self.progressIndicator startAnimation:self];
-
+    [self.progressIndicator startAnimation:nil];
+    [self.progressIndicator displayIfNeeded];
 }
 
 - (IBAction)addHeader:(id)sender {
@@ -89,6 +79,7 @@
 }
 
 -(void)clearTextView{
+    self.resultTextView = [self.resultScrollView documentView];
     if(self.resultTextView){
         [self.resultTextView setString:@""];
 //        NSTextStorage *ts = [self.resultTextView textStorage];
@@ -105,6 +96,7 @@
 }
 
 -(void) receiveNotification :(NSNotification*)aNotification{
+    self.resultTextView = [self.resultScrollView documentView];
     NSString *data = [[aNotification userInfo] objectForKey:@"html"];
     NSString *timeInterval = [[aNotification userInfo] objectForKey:@"delta"];
     [self.timeInterval setStringValue:timeInterval];
@@ -113,14 +105,19 @@
         NSTextStorage *ts = [self.resultTextView textStorage];
         
         [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:data];
-        [ts setFont:[NSFont fontWithName:@"Helvetica Neue" size:14]];
+        NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:14.0];
+        NSDictionary *attrsDictionary =
+        [NSDictionary dictionaryWithObject:font
+                                    forKey:NSFontAttributeName];
+        [ts setAttributes:attrsDictionary range:NSMakeRange(0, [ts length])];
         [self.resultTextView setTextColor:[NSColor whiteColor]];
         [self.tabView selectTabViewItemAtIndex:1];
     }
     
     [self.progressIndicator setIndeterminate:NO];
-    [self.progressIndicator stopAnimation:self];
+    [self.progressIndicator stopAnimation:nil];
     [self.progressIndicator setHidden:YES];
+
 }
 #pragma mark - Request Method ComboBox datasource
 - (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox{

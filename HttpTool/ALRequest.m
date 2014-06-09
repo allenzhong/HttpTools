@@ -44,6 +44,7 @@
     self.session = [NSURLSession sessionWithConfiguration:self.sessionConfig delegate:self delegateQueue:nil];
     self.task = [self.session dataTaskWithRequest:self.request];
     [self.task resume];
+    
 //    [NSURLConnection connectionWithRequest:self.request delegate:self];
 }
 
@@ -52,6 +53,7 @@
     self.url = [NSURL URLWithString:urlString];
     [self beginRequest];
 }
+
 
 #pragma mark - Encodine Response String
 -(NSStringEncoding)getEncodingWithCodeName:(NSString *)encodingName{
@@ -71,6 +73,7 @@
     
     return result;
 }
+
 
 -(void)findEncodingNameWithHtml:(NSString*)muStrHTMLContent{
     if (![self.textEncodingName isEqualToString:@""]) {
@@ -94,8 +97,6 @@
 }
 
 #pragma mark - NSURLSessionDataDelegate
-
-
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error{
     NSLog(@"error %@",error.description);
 }
@@ -105,6 +106,10 @@
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
+//    NSDictionary *dicHeaders = [self.request allHTTPHeaderFields];
+//    [dicHeaders enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
+//        NSLog(@"key: %@ - value: %@",key,obj);
+//    }];
     NSLog(@"Finished");
     NSDate *now = [[NSDate alloc]init];
     NSTimeInterval it = [now timeIntervalSinceDate:self.beginDate];

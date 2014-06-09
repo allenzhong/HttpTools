@@ -16,13 +16,15 @@
 
 @property (weak) IBOutlet NSTextField *urlTextField;
 @property (weak) IBOutlet NSComboBox *methodCombox;
-@property (unsafe_unretained) IBOutlet NSTextView *resultTextView;
+@property NSTextView *resultTextView;
 @property (weak) IBOutlet NSTabView *tabView;
 @property (strong) IBOutlet NSArrayController *headersController;
 @property (weak) IBOutlet NSTableView *headersTableView;
 @property (weak) IBOutlet NSProgressIndicator *progressIndicator;
 @property (weak) IBOutlet NSTextField *timeInterval;
 @property (weak) IBOutlet NSTextField *bodyTextField;
+@property (weak) IBOutlet NSScrollView *bodyScrollView;
+@property (weak) IBOutlet NSScrollView *resultScrollView;
 
 @property (nonatomic,strong) NSArray *methodArray;
 
