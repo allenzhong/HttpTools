@@ -106,21 +106,19 @@
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
-//    NSDictionary *dicHeaders = [self.request allHTTPHeaderFields];
-//    [dicHeaders enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//        NSLog(@"key: %@ - value: %@",key,obj);
-//    }];
-    NSLog(@"Finished");
     NSDate *now = [[NSDate alloc]init];
     NSTimeInterval it = [now timeIntervalSinceDate:self.beginDate];
+    NSString *after_html;
+    if(error){
+        after_html = [[NSString alloc]initWithFormat:@"%@",[error localizedDescription]];
+    }else{
+        NSString *html = [[NSString alloc]initWithData:self.data encoding:NSASCIIStringEncoding];
+        [self findEncodingNameWithHtml:html];
+        NSStringEncoding encode = [self getEncodingWithCodeName:self.textEncodingName];
+        after_html = [[NSString alloc]initWithData:self.data
+                                          encoding:encode];
+    }
     
-    NSLog(@"Time interval %f",it);
-    NSString *html = [[NSString alloc]initWithData:self.data
-                                          encoding:NSASCIIStringEncoding];
-    [self findEncodingNameWithHtml:html];
-    NSStringEncoding encode = [self getEncodingWithCodeName:self.textEncodingName];
-    NSString *after_html = [[NSString alloc]initWithData:self.data
-                                                encoding:encode];
     if(after_html){
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         NSMutableDictionary *message = [[NSMutableDictionary alloc]init];

@@ -13,7 +13,7 @@
 @property NSMutableArray *headers;
 @property NSArray *headerNames;
 @property NSDictionary *headerValues;
-
+@property BOOL busy;
 @property (weak) IBOutlet NSTextField *urlTextField;
 @property (weak) IBOutlet NSComboBox *methodCombox;
 @property NSTextView *resultTextView;
@@ -29,10 +29,6 @@
 @property (nonatomic,strong) NSArray *methodArray;
 
 - (IBAction)makeRequest:(id)sender;
-- (IBAction)addHeader:(id)sender;
-- (IBAction)delHeader:(id)sender;
-- (IBAction)addParameter:(id)sender;
-- (IBAction)delParameter:(id)sender;
 
 
 -(void)clearTextView;

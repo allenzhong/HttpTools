@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Allen Zhong. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
 #import "ALWindowController.h"
 #import "ALHeader.h"
 @interface ALWindowController ()
@@ -40,7 +41,8 @@
     [self.methodCombox selectItemAtIndex:0];
     [self.resultTextView setTextColor:[NSColor whiteColor]];
     [self.resultTextView setString:@""];
-    [self.progressIndicator setHidden:YES];
+    self.busy = NO;
+//    [self.progressIndicator setHidden:YES];
     // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 
     //    [self.headersController addObject:aDic];
@@ -60,33 +62,18 @@
     NSTextView *bodyView = [self.bodyScrollView documentView];
     [request setBody:bodyView.string];
     [request beginRequest];
-    [self.progressIndicator setHidden:NO];
-    [self.progressIndicator setIndeterminate:YES];
-    [self.progressIndicator startAnimation:nil];
-    [self.progressIndicator displayIfNeeded];
+    self.busy = YES;
+//    [CATransaction begin];
+//    [CATransaction setDisableActions:YES];
+//    [self.progressIndicator setHidden:NO];
+//    [self.progressIndicator startAnimation:nil];
 }
 
-- (IBAction)addHeader:(id)sender {
-}
-
-- (IBAction)delHeader:(id)sender {
-}
-
-- (IBAction)addParameter:(id)sender {
-}
-
-- (IBAction)delParameter:(id)sender {
-}
 
 -(void)clearTextView{
     self.resultTextView = [self.resultScrollView documentView];
     if(self.resultTextView){
         [self.resultTextView setString:@""];
-//        NSTextStorage *ts = [self.resultTextView textStorage];
-//        [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:@""];
-//        [ts setFont:[NSFont fontWithName:@"Helvetica Neue" size:14]];
-//        [self.resultTextView setTextColor:[NSColor whiteColor]];
-//        [self.tabView selectTabViewItemAtIndex:1];
     }
 }
 
@@ -103,7 +90,6 @@
     NSLog(@"%@",timeInterval);
     if(self.resultTextView){
         NSTextStorage *ts = [self.resultTextView textStorage];
-        
         [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:data];
         NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:14.0];
         NSDictionary *attrsDictionary =
@@ -111,12 +97,14 @@
                                     forKey:NSFontAttributeName];
         [ts setAttributes:attrsDictionary range:NSMakeRange(0, [ts length])];
         [self.resultTextView setTextColor:[NSColor whiteColor]];
+        [self.resultTextView didChangeText];
         [self.tabView selectTabViewItemAtIndex:1];
     }
-    
-    [self.progressIndicator setIndeterminate:NO];
-    [self.progressIndicator stopAnimation:nil];
-    [self.progressIndicator setHidden:YES];
+//    [self.progressIndicator setIndeterminate:NO];
+    self.busy = NO;
+//    [self.progressIndicator stopAnimation:nil];
+//    [self.progressIndicator setHidden:YES];
+//    [CATransaction commit];
 
 }
 #pragma mark - Request Method ComboBox datasource

@@ -23,7 +23,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="232" y="151" width="970" height="537"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="878"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1058"/>
             <view key="contentView" id="PBM-TD-gKq">
                 <rect key="frame" x="0.0" y="0.0" width="970" height="537"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -62,6 +62,13 @@
                                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <binding destination="-2" name="enabled" keyPath="self.busy" id="sl2-gB-A7h">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </textField>
                                     <button verticalHuggingPriority="750" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="liZ-Wc-ZZl">
                                         <rect key="frame" x="397" y="501" width="90" height="32"/>
@@ -72,6 +79,11 @@
                                         </buttonCell>
                                         <connections>
                                             <action selector="makeRequest:" target="-2" id="RXr-PB-fbM"/>
+                                            <binding destination="-2" name="enabled" keyPath="self.busy" id="v3I-pN-5bY">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
                                         </connections>
                                     </button>
                                     <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UY3-sJ-MbE">
@@ -193,6 +205,14 @@
                                     <progressIndicator maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Y7g-Ne-cb0">
                                         <rect key="frame" x="374" y="511" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <binding destination="-2" name="animate" keyPath="self.busy" id="VtN-0R-q9j"/>
+                                            <binding destination="-2" name="hidden" keyPath="self.busy" id="ez1-YU-OeJ">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </progressIndicator>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-aY-Nx4">
                                         <rect key="frame" x="327" y="262" width="39" height="17"/>
@@ -374,7 +394,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                             <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="lyB-Vl-FKk">
-                                                                <rect key="frame" x="456" y="2" width="16" height="503"/>
+                                                                <rect key="frame" x="460" y="2" width="16" height="503"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                             </scroller>
                                                         </scrollView>
