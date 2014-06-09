@@ -8,15 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "ALHeader.h"
-@interface ALRequest : NSObject<NSURLConnectionDelegate,NSURLConnectionDataDelegate>
+@interface ALRequest : NSObject<NSURLSessionDelegate,NSURLSessionDataDelegate>
 
 @property NSMutableURLRequest *request;
+@property NSURLSessionConfiguration *sessionConfig;
+@property NSURLSession *session;
+@property NSURLSessionDataTask *task;
 @property NSHTTPURLResponse *response;
 @property NSURL *url;
 @property NSError *error;
 @property NSMutableArray *headers;
 @property (nonatomic,strong) NSString *method;
-//@property (nonatomic,strong) NSDictionary *header;
 @property (nonatomic,strong) NSDictionary *parameters;
 @property (nonatomic,strong) NSString   *body;
 @property (nonatomic,strong) NSMutableString *responseHtml;
@@ -29,10 +31,8 @@
 -(void)beginRequestWithUrlString:(NSString *)urlString;
 
 -(NSStringEncoding)getEncodingWithCodeName:(NSString *)encodingName;
-//-(void)beginRequestWithUrl:(NSURL *)url;
-//-(void)beginRequestWithUrlString:(NSString *)urlString;
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error;
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response;
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data;
 
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error;
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data;
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error;
 @end

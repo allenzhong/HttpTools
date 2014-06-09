@@ -40,7 +40,11 @@
     self.responseHtml = [[NSMutableString alloc]init];
     self.textEncodingName = [[NSString alloc]init];
     self.data = [[NSMutableData alloc]init];
-    [NSURLConnection connectionWithRequest:self.request delegate:self];
+    self.sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.session = [NSURLSession sessionWithConfiguration:self.sessionConfig delegate:self delegateQueue:nil];
+    self.task = [self.session dataTaskWithRequest:self.request];
+    [self.task resume];
+//    [NSURLConnection connectionWithRequest:self.request delegate:self];
 }
 
 
@@ -49,9 +53,8 @@
     [self beginRequest];
 }
 
-
+#pragma mark - Encodine Response String
 -(NSStringEncoding)getEncodingWithCodeName:(NSString *)encodingName{
-    
     NSStringEncoding result;
     if([@"gb2312" isEqualToString:[encodingName lowercaseString]]){
         result = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
@@ -90,28 +93,18 @@
     }
 }
 
-#pragma mark - NSURLConnectionDataDelegate
+#pragma mark - NSURLSessionDataDelegate
 
-- (void)connection:(NSURLConnection *)theConnection didReceiveResponse:(NSURLResponse *)response
-{
-    
-    NSInteger responseCode = [(NSHTTPURLResponse *)response statusCode];
-    NSString *textEncodingName = [(NSHTTPURLResponse *)response textEncodingName];
-    self.textEncoding = [self getEncodingWithCodeName:textEncodingName];
-    NSLog(@"response length=%lld  statecode %ld Encoding Name: %@", [response expectedContentLength],(long)responseCode,textEncodingName);
+
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error{
+    NSLog(@"error %@",error.description);
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data{
     [self.data appendData:data];
-
 }
 
-- (void)connection:(NSURLConnection *)theConnection didFailWithError:(NSError *)error
-{
-    NSLog(@"response error%@", [error localizedFailureReason]);
-}
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
     NSLog(@"Finished");
     NSDate *now = [[NSDate alloc]init];
     NSTimeInterval it = [now timeIntervalSinceDate:self.beginDate];
@@ -127,11 +120,10 @@
         NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
         NSMutableDictionary *message = [[NSMutableDictionary alloc]init];
         [message setValue:after_html forKey:@"html"];
-//        [NSDictionary dictionaryWithObject:after_html forKey:@"html"];
+        //        [NSDictionary dictionaryWithObject:after_html forKey:@"html"];
         [message setValue:[NSString stringWithFormat:@"%f s",it] forKey:@"delta"];
         [center postNotificationName:@"httpResponse" object:self userInfo:message];
     }
-
 }
 
 @end
