@@ -83,6 +83,8 @@
 }
 
 -(void) receiveNotification :(NSNotification*)aNotification{
+
+//    [self.tabView selectLastTabViewItem:self];
     self.resultTextView = [self.resultScrollView documentView];
     NSString *data = [[aNotification userInfo] objectForKey:@"html"];
     NSString *timeInterval = [[aNotification userInfo] objectForKey:@"delta"];
@@ -98,10 +100,13 @@
         [ts setAttributes:attrsDictionary range:NSMakeRange(0, [ts length])];
         [self.resultTextView setTextColor:[NSColor whiteColor]];
         [self.resultTextView didChangeText];
-        [self.tabView selectTabViewItemAtIndex:1];
+//        [[self window]makeFirstResponder:self.resultTextView];
+//        [self.tabView selectTabViewItemAtIndex:1];
+//
     }
 //    [self.progressIndicator setIndeterminate:NO];
     self.busy = NO;
+
 //    [self.progressIndicator stopAnimation:nil];
 //    [self.progressIndicator setHidden:YES];
 //    [CATransaction commit];
