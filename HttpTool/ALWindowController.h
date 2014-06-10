@@ -13,6 +13,7 @@
 @property NSMutableArray *headers;
 @property NSArray *headerNames;
 @property NSDictionary *headerValues;
+@property NSAttributedString* rawResponse;
 @property BOOL busy;
 @property (weak) IBOutlet NSTextField *urlTextField;
 @property (weak) IBOutlet NSComboBox *methodCombox;

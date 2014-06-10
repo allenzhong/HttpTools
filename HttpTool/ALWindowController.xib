@@ -385,6 +385,13 @@
                                                                         <color key="insertionPointColor" red="0.90588241820000004" green="0.91764712329999998" blue="0.58431375029999999" alpha="1" colorSpace="deviceRGB"/>
                                                                         <size key="minSize" width="470" height="503"/>
                                                                         <size key="maxSize" width="673" height="10000000"/>
+                                                                        <connections>
+                                                                            <binding destination="-2" name="attributedString" keyPath="self.rawResponse" id="rpD-M3-P0x">
+                                                                                <dictionary key="options">
+                                                                                    <bool key="NSContinuouslyUpdatesValue" value="YES"/>
+                                                                                </dictionary>
+                                                                            </binding>
+                                                                        </connections>
                                                                     </textView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" red="0.92549026010000002" green="0.7607843876" blue="0.62745100259999997" alpha="1" colorSpace="deviceRGB"/>

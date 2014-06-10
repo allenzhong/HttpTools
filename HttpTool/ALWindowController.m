@@ -55,7 +55,7 @@
 - (IBAction)makeRequest:(id)sender {
     NSString *url = [self.urlTextField stringValue];
     NSString *method = [self.methodCombox stringValue];
-    [self clearTextView];
+//    [self clearTextView];
     ALRequest *request = [[ALRequest alloc]initWithUrl:url];
     [request setMethod:method];
     [request setHeaders:self.headers];
@@ -90,21 +90,32 @@
     NSString *timeInterval = [[aNotification userInfo] objectForKey:@"delta"];
     [self.timeInterval setStringValue:timeInterval];
     NSLog(@"%@",timeInterval);
-    if(self.resultTextView){
-        NSTextStorage *ts = [self.resultTextView textStorage];
-        [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:data];
-        NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:14.0];
-        NSDictionary *attrsDictionary =
-        [NSDictionary dictionaryWithObject:font
-                                    forKey:NSFontAttributeName];
-        [ts setAttributes:attrsDictionary range:NSMakeRange(0, [ts length])];
-        [self.resultTextView setTextColor:[NSColor whiteColor]];
-        [self.resultTextView didChangeText];
-//        [[self window]makeFirstResponder:self.resultTextView];
-//        [self.tabView selectTabViewItemAtIndex:1];
-//
-    }
+    id attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                [NSColor whiteColor], NSForegroundColorAttributeName,
+                [NSFont fontWithName:@"Monaco" size:11.], NSFontAttributeName,
+                nil];
+//    if([data isEqualToString:[self.rawResponse string]]){
+//        return;
+//    }
+    [self.resultTextView willChangeValueForKey:@"rawResponse"];
+    self.rawResponse = [[NSAttributedString alloc]initWithString:data attributes:attrs];
+    [self.resultTextView didChangeValueForKey:@"rawResponse"];
+//    if(self.resultTextView){
+//        NSTextStorage *ts = [self.resultTextView textStorage];
+//        [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:data];
+//        NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:14.0];
+//        NSDictionary *attrsDictionary =
+//        [NSDictionary dictionaryWithObject:font
+//                                    forKey:NSFontAttributeName];
+//        [ts setAttributes:attrsDictionary range:NSMakeRange(0, [ts length])];
+//        [self.resultTextView setTextColor:[NSColor whiteColor]];
+//        [self.resultTextView didChangeText];
+////        [[self window]makeFirstResponder:self.resultTextView];
+////        [self.tabView selectTabViewItemAtIndex:1];
+////
+//    }
 //    [self.progressIndicator setIndeterminate:NO];
+//    [self.tabView setNeedsDisplay:YES];
     self.busy = NO;
 
 //    [self.progressIndicator stopAnimation:nil];
