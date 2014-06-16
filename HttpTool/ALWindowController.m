@@ -53,28 +53,28 @@
 }
 
 - (IBAction)makeRequest:(id)sender {
+    [self performSelectorOnMainThread:@selector(beginRequest:) withObject:nil waitUntilDone:NO];
+}
+
+-(IBAction)beginRequest:(id)sender{
     NSString *url = [self.urlTextField stringValue];
     NSString *method = [self.methodCombox stringValue];
-//    [self clearTextView];
+    //    [self clearTextView];
     ALRequest *request = [[ALRequest alloc]initWithUrl:url];
     [request setMethod:method];
     [request setHeaders:self.headers];
     NSTextView *bodyView = [self.bodyScrollView documentView];
     [request setBody:bodyView.string];
     [request beginRequest];
+    [(ALRequest*)sender beginRequest];
     self.busy = YES;
-//    [CATransaction begin];
-//    [CATransaction setDisableActions:YES];
-//    [self.progressIndicator setHidden:NO];
-//    [self.progressIndicator startAnimation:nil];
 }
 
-
 -(void)clearTextView{
-    self.resultTextView = [self.resultScrollView documentView];
-    if(self.resultTextView){
-        [self.resultTextView setString:@""];
-    }
+//    self.resultTextView = [self.resultScrollView documentView];
+//    if(self.resultTextView){
+//        [self.resultTextView setString:@""];
+//    }
 }
 
 -(NSArray *)headerValuesArrayForKey:(NSString *)nameKey{
@@ -83,44 +83,29 @@
 }
 
 -(void) receiveNotification :(NSNotification*)aNotification{
+    
+    [self performSelectorOnMainThread:@selector(setTextViewStringValue:) withObject:aNotification waitUntilDone:YES];
 
-//    [self.tabView selectLastTabViewItem:self];
+//    [self.tabView setNeedsLayout:YES];
+//    [[self.resultScrollView documentView] setNeedsDisplay:YES];
+}
+
+-(IBAction)setTextViewStringValue:(id)sender{
     self.resultTextView = [self.resultScrollView documentView];
-    NSString *data = [[aNotification userInfo] objectForKey:@"html"];
-    NSString *timeInterval = [[aNotification userInfo] objectForKey:@"delta"];
+    NSString *data = [[sender userInfo] objectForKey:@"html"];
+    NSString *timeInterval = [[sender userInfo] objectForKey:@"delta"];
     [self.timeInterval setStringValue:timeInterval];
     NSLog(@"%@",timeInterval);
     id attrs = [NSDictionary dictionaryWithObjectsAndKeys:
                 [NSColor whiteColor], NSForegroundColorAttributeName,
                 [NSFont fontWithName:@"Monaco" size:11.], NSFontAttributeName,
                 nil];
-//    if([data isEqualToString:[self.rawResponse string]]){
-//        return;
-//    }
-    [self.resultTextView willChangeValueForKey:@"rawResponse"];
+    //    if([data isEqualToString:[self.rawResponse string]]){
+    //        return;
+    //    }
     self.rawResponse = [[NSAttributedString alloc]initWithString:data attributes:attrs];
-    [self.resultTextView didChangeValueForKey:@"rawResponse"];
-//    if(self.resultTextView){
-//        NSTextStorage *ts = [self.resultTextView textStorage];
-//        [ts replaceCharactersInRange:NSMakeRange([ts length], 0) withString:data];
-//        NSFont *font = [NSFont fontWithName:@"Helvetica Neue" size:14.0];
-//        NSDictionary *attrsDictionary =
-//        [NSDictionary dictionaryWithObject:font
-//                                    forKey:NSFontAttributeName];
-//        [ts setAttributes:attrsDictionary range:NSMakeRange(0, [ts length])];
-//        [self.resultTextView setTextColor:[NSColor whiteColor]];
-//        [self.resultTextView didChangeText];
-////        [[self window]makeFirstResponder:self.resultTextView];
-////        [self.tabView selectTabViewItemAtIndex:1];
-////
-//    }
-//    [self.progressIndicator setIndeterminate:NO];
-//    [self.tabView setNeedsDisplay:YES];
     self.busy = NO;
-
-//    [self.progressIndicator stopAnimation:nil];
-//    [self.progressIndicator setHidden:YES];
-//    [CATransaction commit];
+    [self.tabView selectTabViewItemAtIndex:1];
 
 }
 #pragma mark - Request Method ComboBox datasource
