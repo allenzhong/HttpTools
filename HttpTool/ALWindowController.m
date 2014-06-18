@@ -51,7 +51,6 @@
 -(IBAction)beginRequest:(id)sender{
     NSString *url = [self.urlTextField stringValue];
     NSString *method = [self.methodCombox stringValue];
-    //    [self clearTextView];
     ALRequest *request = [[ALRequest alloc]initWithUrl:url];
     [request setMethod:method];
     [request setHeaders:self.headers];
@@ -114,6 +113,7 @@
     [self.tabView selectTabViewItemAtIndex:1];
 
 }
+
 #pragma mark - Request Method ComboBox datasource
 - (NSInteger)numberOfItemsInComboBox:(NSComboBox *)aComboBox{
     return [_methodArray count];
