@@ -13,5 +13,6 @@
 {
     ALWindowController *mainWindowController;
 }
+- (IBAction)newWindow:(id)sender;
 
 @end

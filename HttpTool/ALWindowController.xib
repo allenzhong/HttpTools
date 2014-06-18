@@ -20,7 +20,7 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application"/>
-        <window title="HttpTool" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="CRI-Rd-xLe">
+        <window title="HttpTool" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" animationBehavior="default" id="CRI-Rd-xLe">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="232" y="151" width="970" height="537"/>
@@ -215,8 +215,8 @@
                                             <binding destination="-2" name="animate" keyPath="self.busy" id="yWV-Bn-ncF"/>
                                         </connections>
                                     </progressIndicator>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-aY-Nx4">
-                                        <rect key="frame" x="300" y="262" width="72" height="17"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-aY-Nx4">
+                                        <rect key="frame" x="308" y="262" width="64" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Duration:" id="OZS-Dp-KQi">
                                             <font key="font" metaFont="system"/>
@@ -297,7 +297,7 @@
                                     <constraint firstItem="Y7g-Ne-cb0" firstAttribute="centerY" secondItem="ey3-9E-f8M" secondAttribute="centerY" id="nGw-2x-jPS"/>
                                     <constraint firstAttribute="trailing" secondItem="eoT-RT-X4w" secondAttribute="trailing" constant="1" id="oLq-53-ydH"/>
                                     <constraint firstItem="eoT-RT-X4w" firstAttribute="leading" secondItem="RS4-9L-Iqc" secondAttribute="leading" constant="4" id="q1H-TL-HQt"/>
-                                    <constraint firstItem="FNc-aM-ULG" firstAttribute="leading" secondItem="ZHL-aY-Nx4" secondAttribute="trailing" constant="10" id="sUk-pz-Whe"/>
+                                    <constraint firstItem="FNc-aM-ULG" firstAttribute="leading" secondItem="ZHL-aY-Nx4" secondAttribute="trailing" constant="4" id="sUk-pz-Whe"/>
                                     <constraint firstItem="UY3-sJ-MbE" firstAttribute="leading" secondItem="ey3-9E-f8M" secondAttribute="leading" id="uz8-g2-zb5"/>
                                     <constraint firstAttribute="bottom" secondItem="baL-Lu-SWl" secondAttribute="bottom" constant="4" id="xgb-Hp-1gn"/>
                                     <constraint firstItem="liZ-Wc-ZZl" firstAttribute="leading" secondItem="Y7g-Ne-cb0" secondAttribute="trailing" constant="13" id="ydH-8X-JUO"/>

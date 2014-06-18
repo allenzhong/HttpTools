@@ -10,14 +10,14 @@
 #import "ALHeader.h"
 @interface ALRequest : NSObject<NSURLSessionDelegate,NSURLSessionDataDelegate>
 
-@property NSMutableURLRequest *request;
-@property NSURLSessionConfiguration *sessionConfig;
-@property NSURLSession *session;
-@property NSURLSessionDataTask *task;
-@property NSHTTPURLResponse *response;
-@property NSURL *url;
-@property NSError *error;
-@property NSMutableArray *headers;
+@property (nonatomic,strong) NSMutableURLRequest *request;
+@property (nonatomic,strong) NSURLSessionConfiguration *sessionConfig;
+@property (nonatomic,strong) NSURLSession *session;
+@property (nonatomic,strong) NSURLSessionDataTask *task;
+@property (nonatomic,strong) NSHTTPURLResponse *response;
+@property (nonatomic,strong) NSURL *url;
+@property (nonatomic,strong) NSError *error;
+@property (nonatomic,strong) NSMutableArray *headers;
 @property (nonatomic,strong) NSString *method;
 @property (nonatomic,strong) NSDictionary *parameters;
 @property (nonatomic,strong) NSString   *body;
@@ -25,7 +25,7 @@
 @property (nonatomic,strong) NSMutableData *data;
 @property (nonatomic,strong) NSDate* beginDate;
 @property NSStringEncoding textEncoding;
-@property NSString *textEncodingName;
+@property (nonatomic,strong) NSString *textEncodingName;
 -(id) initWithUrl:(NSString *)url;
 -(void)beginRequest;
 -(void)beginRequestWithUrlString:(NSString *)urlString;

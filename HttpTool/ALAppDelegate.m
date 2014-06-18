@@ -18,4 +18,8 @@
     [mainWindowController showWindow:self];
 }
 
+- (IBAction)newWindow:(id)sender {
+    mainWindowController = [[ALWindowController alloc]initWithWindowNibName:@"ALWindowController"];
+    [mainWindowController showWindow:nil];
+}
 @end

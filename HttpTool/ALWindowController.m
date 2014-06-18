@@ -25,6 +25,7 @@
         filePath = [[NSBundle mainBundle]pathForResource:@"HeaderValues" ofType:@"plist"];
         self.headerValues = [NSDictionary dictionaryWithContentsOfFile:filePath];
         [self setupData];
+//        self.request = [[ALRequest alloc]init];
     }
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(receiveNotification:) name:@"httpResponse" object:nil];
@@ -45,21 +46,22 @@
 }
 
 - (IBAction)makeRequest:(id)sender {
-    [self performSelectorOnMainThread:@selector(beginRequest:) withObject:nil waitUntilDone:NO];
+    [self performSelectorOnMainThread:@selector(beginRequest:) withObject:nil waitUntilDone:YES];
 }
 
 -(IBAction)beginRequest:(id)sender{
     NSString *url = [self.urlTextField stringValue];
-    NSString *method = [self.methodCombox stringValue];
-    ALRequest *request = [[ALRequest alloc]initWithUrl:url];
-    [request setMethod:method];
-    [request setHeaders:self.headers];
+//    NSString *method = [self.methodCombox stringValue];
+//    NSURL *urlObj = [NSURL URLWithString:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    self.request = [[ALRequest alloc]initWithUrl:url];
+//    [self.request setUrl:urlObj];
+    [self.request setMethod:[self.methodCombox stringValue]];
+    [self.request setHeaders:self.headers];
     NSTextView *bodyView = [self.bodyScrollView documentView];
-    [request setBody:bodyView.string];
-    [request beginRequest];
-    [(ALRequest*)sender beginRequest];
+    [self.request setBody:bodyView.string];
+    [self.request beginRequest];
     self.busy = YES;
-    [self SetRequestStringValue:request];
+    [self SetRequestStringValue:self.request];
 }
 
 -(void)clearTextView{

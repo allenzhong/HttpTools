@@ -21,8 +21,6 @@
 
 
 -(void)beginRequest{
-    self.beginDate = [[NSDate alloc]init];
-    NSLog(@"%@",self.beginDate);
     if([@"POST" isEqualToString:self.method]){
         [self.request setHTTPBody:[self.body dataUsingEncoding:0]];
     }
@@ -37,15 +35,64 @@
             [self.request setValue:h.value forHTTPHeaderField:h.name];
         }
     }
-    self.responseHtml = [[NSMutableString alloc]init];
-    self.textEncodingName = [[NSString alloc]init];
-    self.data = [[NSMutableData alloc]init];
-    self.sessionConfig = [NSURLSessionConfiguration defaultSessionConfiguration];
-    self.session = [NSURLSession sessionWithConfiguration:self.sessionConfig delegate:self delegateQueue:nil];
-    self.task = [self.session dataTaskWithRequest:self.request];
-    [self.task resume];
     
-//    [NSURLConnection connectionWithRequest:self.request delegate:self];
+    NSURLSessionTask *task = [self.session dataTaskWithRequest:self.request];
+    [task resume];
+}
+
+-(NSDate *)beginDate{
+    if(_beginDate == nil){
+        _beginDate = [[NSDate alloc]init];
+    }
+    return _beginDate;
+}
+
+-(NSMutableString *)responseHtml{
+    if(_responseHtml == nil){
+        _responseHtml = [[NSMutableString alloc]init];
+    }
+    return _responseHtml;
+}
+
+-(NSString *)textEncodingName{
+    if(_textEncodingName == nil){
+        _textEncodingName = [[NSString alloc]init];
+    }
+    return _textEncodingName;
+}
+
+- (NSURLSessionConfiguration *)sessionConfig
+{
+    if (_sessionConfig == nil)
+    {
+        _sessionConfig = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+//        [_sessionConfig setHTTPAdditionalHeaders:@{@"Accept": @"application/json"}];
+        _sessionConfig.timeoutIntervalForRequest = 60.0;
+        _sessionConfig.timeoutIntervalForResource = 120.0;
+        _sessionConfig.HTTPMaximumConnectionsPerHost = 1;
+    }
+    
+    return _sessionConfig;
+}
+
+
+-(NSURLSession *)session{
+    if (_session == nil)
+    {
+        _session = [NSURLSession
+                    sessionWithConfiguration:self.sessionConfig
+                    delegate:self
+                    delegateQueue:[NSOperationQueue mainQueue]];
+    }
+    
+    return _session;
+}
+
+-(NSMutableData *)data{
+    if(_data == nil){
+        _data = [[NSMutableData alloc]init];
+    }
+    return _data;
 }
 
 

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HttpTool/ALRequest.m"
-            timestampString = "424017227.933851"
+            timestampString = "424782003.705337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "-URLSession:task:didCompleteWithError:"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "-URLSession:dataTask:didReceiveData:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HttpTool/ALRequest.m"
-            timestampString = "424016014.518301"
+            timestampString = "424782003.705337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
-            landmarkName = "-URLSession:task:didCompleteWithError:"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
+            landmarkName = "-findEncodingNameWithHtml:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HttpTool/ALWindowController.m"
-            timestampString = "424771877.218791"
+            timestampString = "424776325.864677"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-beginRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,12 +58,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HttpTool/ALRequest.m"
-            timestampString = "424017227.933851"
+            timestampString = "424782003.705337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-URLSession:task:didCompleteWithError:"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "@implementation ALRequest"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HttpTool/ALWindowController.m"
+            timestampString = "424782937.539866"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-numberOfItemsInComboBox:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +89,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HttpTool/ALWindowController.m"
-            timestampString = "424767733.378325"
+            filePath = "HttpTool/ALRequest.m"
+            timestampString = "424782003.705337"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "120"
-            endingLineNumber = "120"
-            landmarkName = "-numberOfItemsInComboBox:"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-beginDate"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HttpTool/ALRequest.m"
+            timestampString = "424782003.705337"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "-sessionConfig"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -15,6 +15,7 @@
 @property NSDictionary *headerValues;
 @property NSAttributedString* rawResponse;
 @property NSAttributedString* rawRequest;
+@property ALRequest *request;
 @property BOOL busy;
 
 @property NSTextView *resultTextView;
