@@ -11,6 +11,7 @@
                 <outlet property="headersTableView" destination="qBB-mW-uIi" id="Qis-kE-fOr"/>
                 <outlet property="methodCombox" destination="UY3-sJ-MbE" id="DNW-so-gbZ"/>
                 <outlet property="progressIndicator" destination="Y7g-Ne-cb0" id="hcV-3f-E65"/>
+                <outlet property="requestScrollView" destination="j5b-8k-cP8" id="mRI-SK-hlT"/>
                 <outlet property="resultScrollView" destination="xsg-fX-wdl" id="fTN-hf-1ip"/>
                 <outlet property="tabView" destination="zOG-F1-ow5" id="OL4-qj-1ca"/>
                 <outlet property="timeInterval" destination="FNc-aM-ULG" id="lWK-mL-bnY"/>
@@ -206,18 +207,18 @@
                                         <rect key="frame" x="374" y="511" width="16" height="16"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <connections>
-                                            <binding destination="-2" name="animate" keyPath="self.busy" id="yWV-Bn-ncF"/>
                                             <binding destination="-2" name="hidden" keyPath="self.busy" id="dDp-hs-Tbz">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                 </dictionary>
                                             </binding>
+                                            <binding destination="-2" name="animate" keyPath="self.busy" id="yWV-Bn-ncF"/>
                                         </connections>
                                     </progressIndicator>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-aY-Nx4">
-                                        <rect key="frame" x="327" y="262" width="39" height="17"/>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZHL-aY-Nx4">
+                                        <rect key="frame" x="300" y="262" width="72" height="17"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Time:" id="OZS-Dp-KQi">
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Duration:" id="OZS-Dp-KQi">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -323,18 +324,22 @@
                                                                 <rect key="frame" x="1" y="1" width="472" height="505"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="qPV-zg-MD5">
+                                                                    <textView importsGraphics="NO" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="qPV-zg-MD5">
                                                                         <rect key="frame" x="0.0" y="0.0" width="472" height="505"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="textColor" red="0.93333339689999995" green="0.92549026010000002" blue="0.69803923369999998" alpha="1" colorSpace="deviceRGB"/>
+                                                                        <color key="backgroundColor" red="0.082352943720000002" green="0.14901961389999999" blue="0.36470589040000001" alpha="1" colorSpace="deviceRGB"/>
                                                                         <size key="minSize" width="472" height="505"/>
                                                                         <size key="maxSize" width="482" height="10000000"/>
-                                                                        <color key="insertionPointColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <color key="insertionPointColor" red="0.93333339689999995" green="0.92549026010000002" blue="0.69803923369999998" alpha="1" colorSpace="deviceRGB"/>
                                                                         <size key="minSize" width="472" height="505"/>
                                                                         <size key="maxSize" width="482" height="10000000"/>
+                                                                        <connections>
+                                                                            <binding destination="-2" name="attributedString" keyPath="self.rawRequest" id="1NG-p1-BLx"/>
+                                                                        </connections>
                                                                     </textView>
                                                                 </subviews>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="backgroundColor" red="0.034521541780781595" green="0.13675175740536927" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             </clipView>
                                                             <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="nUL-vU-gvo">
                                                                 <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -366,7 +371,7 @@
                                                                 <rect key="frame" x="2" y="2" width="474" height="503"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <subviews>
-                                                                    <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="EaU-og-Osb">
+                                                                    <textView importsGraphics="NO" findStyle="panel" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="EaU-og-Osb">
                                                                         <rect key="frame" x="0.0" y="0.0" width="474" height="503"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <color key="textColor" red="0.93333339691162109" green="0.92549026012420654" blue="0.69803923368453979" alpha="1" colorSpace="deviceRGB"/>

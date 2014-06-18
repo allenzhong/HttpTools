@@ -42,14 +42,6 @@
     [self.resultTextView setTextColor:[NSColor whiteColor]];
     [self.resultTextView setString:@""];
     self.busy = NO;
-//    [self.progressIndicator setHidden:YES];
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-
-    //    [self.headersController addObject:aDic];
-//    [self willChangeValueForKey:@"headers"];
-//    [self.headers addObject:aDic];
-//    [self didChangeValueForKey:@"headers"];
-    
 }
 
 - (IBAction)makeRequest:(id)sender {
@@ -68,13 +60,14 @@
     [request beginRequest];
     [(ALRequest*)sender beginRequest];
     self.busy = YES;
+    [self SetRequestStringValue:request];
 }
 
 -(void)clearTextView{
-//    self.resultTextView = [self.resultScrollView documentView];
-//    if(self.resultTextView){
-//        [self.resultTextView setString:@""];
-//    }
+    self.resultTextView = [self.resultScrollView documentView];
+    if(self.resultTextView){
+        [self.resultTextView setString:@""];
+    }
 }
 
 -(NSArray *)headerValuesArrayForKey:(NSString *)nameKey{
@@ -84,14 +77,30 @@
 
 -(void) receiveNotification :(NSNotification*)aNotification{
     
-    [self performSelectorOnMainThread:@selector(setTextViewStringValue:) withObject:aNotification waitUntilDone:YES];
-
-//    [self.tabView setNeedsLayout:YES];
-//    [[self.resultScrollView documentView] setNeedsDisplay:YES];
+    [self performSelectorOnMainThread:@selector(setResponseStringValue:) withObject:aNotification waitUntilDone:YES];
 }
 
--(IBAction)setTextViewStringValue:(id)sender{
-    self.resultTextView = [self.resultScrollView documentView];
+-(void)SetRequestStringValue:(ALRequest *)request{
+    NSMutableString *requestString = [[NSMutableString alloc]init];
+    [requestString appendString:@"Scheme:"];
+    [requestString appendString:[request.url scheme]];
+    [requestString appendString:@"\n\rmethod:"];
+    [requestString appendString:[request method]];
+    if([request.headers count]>0){
+        [requestString appendString:@"\n\rHeaders:\n\r"];
+    }
+    for(ALHeader* head in [request headers]){
+        NSString *headString = [NSString stringWithFormat:@"%@ : %@\n\r",head.name,head.value];
+        [requestString appendString:headString];
+    }
+    id attrs = [NSDictionary dictionaryWithObjectsAndKeys:
+                [NSColor whiteColor], NSForegroundColorAttributeName,
+                [NSFont fontWithName:@"Monaco" size:11.], NSFontAttributeName,
+                nil];
+    self.rawRequest = [[NSAttributedString alloc]initWithString:requestString attributes:attrs];
+}
+
+-(IBAction)setResponseStringValue:(id)sender{
     NSString *data = [[sender userInfo] objectForKey:@"html"];
     NSString *timeInterval = [[sender userInfo] objectForKey:@"delta"];
     [self.timeInterval setStringValue:timeInterval];
@@ -100,9 +109,6 @@
                 [NSColor whiteColor], NSForegroundColorAttributeName,
                 [NSFont fontWithName:@"Monaco" size:11.], NSFontAttributeName,
                 nil];
-    //    if([data isEqualToString:[self.rawResponse string]]){
-    //        return;
-    //    }
     self.rawResponse = [[NSAttributedString alloc]initWithString:data attributes:attrs];
     self.busy = NO;
     [self.tabView selectTabViewItemAtIndex:1];

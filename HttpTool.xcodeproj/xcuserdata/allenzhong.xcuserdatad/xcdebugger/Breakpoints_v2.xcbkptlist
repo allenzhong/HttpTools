@@ -74,28 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HttpTool/ALWindowController.m"
-            timestampString = "424617526.83968"
+            timestampString = "424767733.378325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "-receiveNotification:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HttpTool/ALWindowController.m"
-            timestampString = "424617526.83968"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "-setTextViewStringValue:"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-setResponseStringValue:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

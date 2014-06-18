@@ -14,10 +14,11 @@
 @property NSArray *headerNames;
 @property NSDictionary *headerValues;
 @property NSAttributedString* rawResponse;
+@property NSAttributedString* rawRequest;
 @property BOOL busy;
-@property (weak) IBOutlet NSTextField *urlTextField;
-@property (weak) IBOutlet NSComboBox *methodCombox;
+
 @property NSTextView *resultTextView;
+@property NSTextView *requestTextView;
 @property (weak) IBOutlet NSTabView *tabView;
 @property (strong) IBOutlet NSArrayController *headersController;
 @property (weak) IBOutlet NSTableView *headersTableView;
@@ -26,7 +27,9 @@
 @property (weak) IBOutlet NSTextField *bodyTextField;
 @property (weak) IBOutlet NSScrollView *bodyScrollView;
 @property (weak) IBOutlet NSScrollView *resultScrollView;
-
+@property (weak) IBOutlet NSScrollView *requestScrollView;
+@property (weak) IBOutlet NSTextField *urlTextField;
+@property (weak) IBOutlet NSComboBox *methodCombox;
 @property (nonatomic,strong) NSArray *methodArray;
 
 - (IBAction)makeRequest:(id)sender;
