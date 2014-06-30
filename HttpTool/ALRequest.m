@@ -35,17 +35,12 @@
             [self.request setValue:h.value forHTTPHeaderField:h.name];
         }
     }
-    
+    _beginDate = [NSDate date];
     NSURLSessionTask *task = [self.session dataTaskWithRequest:self.request];
     [task resume];
 }
 
--(NSDate *)beginDate{
-    if(_beginDate == nil){
-        _beginDate = [[NSDate alloc]init];
-    }
-    return _beginDate;
-}
+
 
 -(NSMutableString *)responseHtml{
     if(_responseHtml == nil){
@@ -153,8 +148,7 @@
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error{
-    NSDate *now = [[NSDate alloc]init];
-    NSTimeInterval it = [now timeIntervalSinceDate:self.beginDate];
+    NSTimeInterval delta = [NSDate timeIntervalSinceReferenceDate] - [self.beginDate timeIntervalSinceReferenceDate];
     NSString *after_html;
     if(error){
         after_html = [[NSString alloc]initWithFormat:@"%@",[error localizedDescription]];
@@ -171,7 +165,7 @@
         NSMutableDictionary *message = [[NSMutableDictionary alloc]init];
         [message setValue:after_html forKey:@"html"];
         //        [NSDictionary dictionaryWithObject:after_html forKey:@"html"];
-        [message setValue:[NSString stringWithFormat:@"%f s",it] forKey:@"delta"];
+        [message setValue:[NSString stringWithFormat:@"%f s",delta] forKey:@"delta"];
         [center postNotificationName:@"httpResponse" object:self userInfo:message];
     }
 }
