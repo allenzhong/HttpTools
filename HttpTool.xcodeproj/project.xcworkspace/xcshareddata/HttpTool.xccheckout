@@ -10,29 +10,29 @@
 	<string>HttpTool</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>0CA87F4B-0EE1-47C4-911E-6D000AE3B708</key>
+		<key>488CE15B25B6E80BC45FC6B52D3B499F26FE3ABF</key>
 		<string>https://github.com/allenzhong/HttpTools.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>HttpTool.xcodeproj/project.xcworkspace</string>
+	<string>HttpTool.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>0CA87F4B-0EE1-47C4-911E-6D000AE3B708</key>
+		<key>488CE15B25B6E80BC45FC6B52D3B499F26FE3ABF</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/allenzhong/HttpTools.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>0CA87F4B-0EE1-47C4-911E-6D000AE3B708</string>
+	<string>488CE15B25B6E80BC45FC6B52D3B499F26FE3ABF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>0CA87F4B-0EE1-47C4-911E-6D000AE3B708</string>
+			<string>488CE15B25B6E80BC45FC6B52D3B499F26FE3ABF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HttpTools</string>
 		</dict>
