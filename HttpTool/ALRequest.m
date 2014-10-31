@@ -22,7 +22,7 @@
 
 -(void)beginRequest{
     if([@"POST" isEqualToString:self.method]){
-        [self.request setHTTPBody:[self.body dataUsingEncoding:0]];
+        [self.request setHTTPBody:[self.body dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
     [self.request setHTTPMethod:self.method];

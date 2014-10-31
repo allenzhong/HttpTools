@@ -22,6 +22,7 @@
 		D17F718A191A22F100DB6D72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D17F7189191A22F100DB6D72 /* Images.xcassets */; };
 		D17F7191191A22F100DB6D72 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17F7190191A22F100DB6D72 /* XCTest.framework */; };
 		D17F7192191A22F100DB6D72 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D17F7171191A22F000DB6D72 /* Cocoa.framework */; };
+		D1F2C64119FFEC1800213618 /* HttpTool-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D17F7179191A22F000DB6D72 /* HttpTool-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,6 +244,7 @@
 				D17F717C191A22F000DB6D72 /* InfoPlist.strings in Resources */,
 				D104244D1921E658001737BF /* ALWindowController.xib in Resources */,
 				D17F718A191A22F100DB6D72 /* Images.xcassets in Resources */,
+				D1F2C64119FFEC1800213618 /* HttpTool-Info.plist in Resources */,
 				D12D6F6A1928884700FDB309 /* HeaderValues.plist in Resources */,
 				D17F7182191A22F100DB6D72 /* Credits.rtf in Resources */,
 				D17F7188191A22F100DB6D72 /* MainMenu.xib in Resources */,
